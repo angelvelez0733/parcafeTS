@@ -6,6 +6,9 @@ const app = express().use(bodyParser.json());
 dotenv.config();
 const PORT = process.env.PORT || 10240;
 
+import register from "./src/routes/users/user";
+
+app.use("/register", register);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

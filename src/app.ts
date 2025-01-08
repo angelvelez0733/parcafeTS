@@ -6,7 +6,7 @@ const app = express().use(bodyParser.json());
 dotenv.config();
 const PORT = process.env.PORT || 10240;
 
-import register from "./src/routes/users/user";
+import register from "./routes/users/user";
 
 app.use("/register", register);
 

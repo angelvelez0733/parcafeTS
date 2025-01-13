@@ -5,6 +5,8 @@ import Auth from "../DTO/authDTO";
 const auth = async(req: Request, res: Response): Promise<any> => {
     try {
         const { email, password } = req.body;
+        console.log("Received data : ", email, password);
+        
 
         const token: any = await AuthService.auth(new Auth(email, password));
 

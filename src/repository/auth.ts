@@ -1,9 +1,9 @@
 import db from "../config/configDB";
 
 class AuthRepository {
-    static async auth(email: string, role: string) {
+    static async auth(email: string) {
         const sql = "SELECT correo, contrasenia, role FROM users WHERE correo = (?)";
-        const values = [email, role];
+        const values = [email];
         console.log(values);
         
         try {

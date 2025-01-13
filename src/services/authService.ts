@@ -7,25 +7,21 @@ class AuthService {
     static async auth(auth: Auth) {
         
         try {
-            const user = await AuthRepository.auth(auth.email, auth.password);
+            const user: any = await AuthRepository.auth(auth.email);
             
-            const roles: any = [
-                {result: user, role: "user"},
-                {result: user, role: "admin"},
-            ];
-            for(const {result, role} of roles) {
-                if (result.length > 0) {
-                    const isPasswordValid = await compareHash(auth.password, result[0].password);
-                    if (isPasswordValid) {
-                        const token = generateToken(
-                            {email: auth.email, role: role},
-                            process.env.SECRET,
-                            60
-                        );
-                        return token;
-                    }
+            if (user.length > 0) {
+                const isValidPassword = await compareHash(auth.email, user[0].contrasenia);
+                if (isValidPassword) {
+                    const token = generateToken(
+                        {email: auth.email, role: user[0].role},
+                        process.env.SECRET,
+                        60
+                    );
+                    console.log(token);
+                    
+                    return token;
                 }
-            };
+            }
             return null;
         } catch (error) {
             if (error instanceof Error) {

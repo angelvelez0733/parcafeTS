@@ -7,12 +7,10 @@ let register = async (req: Request, res: Response): Promise<any> => {
         const {
             name,
             email,
-            password,
-            cv_path,
-            role
+            password    
         } = req.body;
 
-        const result = await registerService.register(new User(name, email, password, cv_path, role));
+        const result = await registerService.register(new User(name, email, password));
         return res.status(201).json({
             message: "User created successfully",
         });

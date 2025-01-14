@@ -3,9 +3,9 @@ class User {
     private _email: string;
     private _password: string;
     private _cv_path?: string;
-    private _role: string;
+    private _role?: string;
 
-    constructor(name: string, email: string, password: string, cv_path: string, role: string){
+    constructor(name: string, email: string, password: string, cv_path?: string, role?: string){
         this._name = name;
         this._email = email;
         this._password = password;
@@ -26,7 +26,7 @@ class User {
     public get cv_path(): string | undefined {
         return this._cv_path;
     }
-    public get role(): string {
+    public get role(): string | undefined {
         return this._role;
     }
 

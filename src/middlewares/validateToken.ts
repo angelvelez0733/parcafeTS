@@ -10,12 +10,13 @@ interface JwtPayload {
 }
 
 const validateToken = (allowedRoles: string[]) => {
-    return async (req: Request, res: Response, next: NextFunction) => {
+    return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             //Formato Bearer esperado del token
             const token = req.header("Authorization")?.split(" ")[1];
             if (!token) {
-                return res.status(401).json({ status: "You dont send token"});
+                res.status(401).json({ status: "You dont send token"});
+                return;
             }
             
             const decoded = jwt.verify(
@@ -24,15 +25,17 @@ const validateToken = (allowedRoles: string[]) => {
             ) as JwtPayload;
             const userRole = decoded.data.role;
             if (!allowedRoles.includes(userRole)) {
-                return res.status(403).json({
+                res.status(403).json({
                     status: "Access denied"
                 });
+                return;
             }
 
+            req.body.tokenEmail = decoded.data.email;
             req.body.tokenRole = decoded.data.role;
             next();
         } catch (error: any) {
-            return res.status(403).json({ status: "Invalid token", error: error.message });
+            res.status(403).json({ status: "Invalid token", error: error.message });
         }
     }
 }

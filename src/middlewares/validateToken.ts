@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 interface JwtPayload {
-    data: { email: string, role: string };
+    data: { id: number, email: string, role: string };
     exp: number;
     iat: number;
 }
@@ -31,6 +31,7 @@ const validateToken = (allowedRoles: string[]) => {
                 return;
             }
 
+            req.body.tokenId = decoded.data.id
             req.body.tokenEmail = decoded.data.email;
             req.body.tokenRole = decoded.data.role;
             next();

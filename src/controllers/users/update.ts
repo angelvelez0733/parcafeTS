@@ -4,33 +4,25 @@ import updateUser from "../../services/users/update";
 class updateController {
     static async updateUser(req: Request, res: Response, next: NextFunction): Promise<any> {
         try {
-            const userId = req.body.tokenId;
-            console.log(userId);
-            
-            const { name, email } = req.body;
+            const { name, email, phone, address } = req.body;
+            const tokenEmail = req.body.tokenEmail;         
 
-            if (!name && !email) {
-                return res.status(400).json({
-                    message: "Name or email es required"
-                });
+            if (!tokenEmail) {
+                return res.status(400).json({ message: "Token email not found" });
             }
 
-            const updatedUser: any = {
-                id: userId,
-                name: name || null,
-                email: email || null,
-            };
-
-            const result = await updateUser.updateData(updatedUser);
-            res.status(200).json({
-                result
+            const result = await updateUser.updateData({
+                email: tokenEmail,
+                name,
+                emailToUpdate: email,
+                phone,
+                address,
             });
+            return res.status(200).json({result});
             next();
         } catch (error: any) {
-            res.status(500).json({
-                message: "Error updating user", 
-                error: error.message
-            })
+            console.error("Error in update controller:", error.message);
+            return res.status(500).json({ message: "Error updating user", error: error.message });
         }
     }
 }

@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from "express";
 const validationParamsRegister = [
     check("name").isLength({min: 12, max: 50}).withMessage("Debe ingresar su nombre y apellido").toLowerCase(),
     check("email").isEmail().withMessage("Debe ingresar un correo electrónico válido"),
+    check("phone").isLength({min: 10, max:10}).withMessage("Ingrese un número de celular válido"),
     check("password").isLength({min: 8, max: 20}).withMessage("La contraseña debe tener minimo 8 caracteres y maximo 20")
     .matches(/(?=.*[a-z])/)
     .withMessage("La contraseñ debe tener al menos una letra en minúscula")

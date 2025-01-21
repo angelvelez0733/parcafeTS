@@ -9,9 +9,9 @@ class updateUser {
             const user: User = {
                 id: userId,
                 name: userData.name,
-                email: userData.email,
                 phone: userData.phone,
-                address: userData.address
+                address: userData.address,
+                email: userData.email
             };
 
             const result = await updateRepository.updateUser(user); 

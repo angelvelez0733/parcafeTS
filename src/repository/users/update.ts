@@ -20,7 +20,7 @@ class updateRepository {
 
     static async updateUser(user: User) {
         const sql = "CALL actualizarUsuario(?,?,?,?)";
-        const values = [user.id, user.name, user.email, user.phone, user.address];        
+        const values = [user.id, user.name, user.phone, user.address, user.email,];        
         console.log(values);
         
         try {

@@ -4,6 +4,8 @@ import profileService from "../services/profile";
 const getProfile = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const email = req.body.tokenEmail;
+        console.log(email);
+        
         const profile = await profileService.getProfileByEmail(email);
 
         res.status(200).json({

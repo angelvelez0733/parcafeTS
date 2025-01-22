@@ -3,7 +3,7 @@ import db from "../config/configDB";
 
 class profileRepository {
     static async getProfileByEmail(email: string) {
-        const sql = "SELECT nombre, correo, cv_path FROM users WHERE correo = ?";
+        const sql = "SELECT nombre, telefono, direccion, correo, cv_path FROM users WHERE correo = ?";
         const values = [email];
 
         try {

@@ -11,7 +11,14 @@ router.post("/", validationParamsRegister, validationRegister, registerControlle
 import updateController from "../../controllers/users/update";
 import validateToken from "../../middlewares/validateToken";
 
+//IMPORT CHANGEPASSWORD
+import changePasswordController from '../../controllers/users/changePassword';  
+import { validationChangePassword, validationParamsChangePassword } from "../../middlewares/validators/changePassword";
+
+
 router.put("/update", validateToken(["user"]), updateController.updateUser);
+
+router.put("/",validationChangePassword, validationParamsChangePassword, validateToken(["user"]), changePasswordController);
 
 
 

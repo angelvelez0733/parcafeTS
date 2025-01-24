@@ -3,7 +3,7 @@ import User from "../../DTO/userDTO";
 import registerService from "../../services/users/register";
 
 let register = async (req: Request, res: Response): Promise<any> => {
-    try {
+    try {   
         const {
             name,
             email,

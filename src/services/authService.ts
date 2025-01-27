@@ -8,15 +8,16 @@ class AuthService {
         
         try {
             const user: any = await AuthRepository.auth(auth.email);
-            
+
             if (user.length > 0) {
                 const isValidPassword = await compareHash(auth.password, user[0].contrasenia);                
                 if (isValidPassword) {
                     const token = generateToken(
-                        {email: auth.email, role: user[0].role},
+                        {id: user[0].id, email: auth.email, role: user[0].role},
                         process.env.SECRET,
                         60
-                    );                    
+                    );    
+                                    
                     return token;
                 }
             }

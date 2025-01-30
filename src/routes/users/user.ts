@@ -1,5 +1,6 @@
 import express from "express";
 const router = express.Router();
+import validateToken from "../../middlewares/validateToken";
 
 //IMPORTS REGISTER
 import registerController from "../../controllers/users/registerController";
@@ -9,17 +10,20 @@ router.post("/", validationParamsRegister, validationRegister, registerControlle
 
 //IMPORTS UPDATE BASIC DATA 
 import updateController from "../../controllers/users/update";
-import validateToken from "../../middlewares/validateToken";
+
+router.put("/update", validateToken(["user"]), updateController.updateUser);
 
 //IMPORT CHANGEPASSWORD
 import changePasswordController from '../../controllers/users/changePassword';  
 import { validationChangePassword, validationParamsChangePassword } from "../../middlewares/validators/changePassword";
 
-
-router.put("/update", validateToken(["user"]), updateController.updateUser);
-
 router.put("/",validationChangePassword, validationParamsChangePassword, validateToken(["user"]), changePasswordController);
 
+//IMPORT UPLOAD CV
+import { UploadCvController } from "../../controllers/users/uploadCv";
+import { uploadCv } from "../../middlewares/configMulter";
+const controller = new UploadCvController();
 
+router.post("/cv", uploadCv.single("cv"), validateToken(["user"]), controller.handle.bind(controller));
 
 export default router;

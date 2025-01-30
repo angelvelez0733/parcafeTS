@@ -10,6 +10,7 @@ import auth from "./routes/auth";
 import profile from "./routes/profile";
 import update from "./routes/users/user";
 import changePassword from './routes/users/user';
+import uploadCv from "./routes/users/user";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -19,7 +20,7 @@ app.use("/auth", auth);
 app.use("/profile", profile);
 app.use("/user", update);
 app.use("/changePassword", changePassword);
-
+app.use("/upload", uploadCv);
 
 
 app.listen(PORT, () => {

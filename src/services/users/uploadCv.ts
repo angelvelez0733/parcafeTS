@@ -6,9 +6,7 @@ export class UploadCvService {
     private repository = new UploadCvRepository();
 
     async uploadCv(userId: number, filePath: string): Promise<void> {
-        try {
-            console.log("Verificando que el archivo existe:", filePath);
-            
+        try {            
             // Asegurar que el nuevo archivo se ha guardado antes de eliminar el viejo
             if (!fs.existsSync(filePath)) {
                 throw new Error("El nuevo archivo no se guardó correctamente.");
@@ -25,8 +23,6 @@ export class UploadCvService {
                     fs.unlinkSync(fullPath);
                 }
             }
-
-            console.log("Nuevo archivo guardado correctamente:", filePath);
 
         } catch (error) {
             throw error;

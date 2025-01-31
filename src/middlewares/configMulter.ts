@@ -4,18 +4,15 @@ import { Request } from "express";
 
 const storage = multer.diskStorage({
     destination: (req: Request, file, cb) => {
-        console.log("📂 Guardando en:", path.join(__dirname, "../../public/storage/"));
         cb(null, path.join(__dirname, "../../public/storage/")); 
     },
     filename: (req: Request, file, cb) => {
         const userId = req.body.tokenId || req.headers.tokenId;
-        const fileName = `cv_${2}.pdf`;
-        console.log("📄 Nombre de archivo:", fileName);
+        const timestamp = Date.now();
+        const fileName = `cv_${userId}_${timestamp}.pdf`;
         cb(null, fileName);
     }
 });
-
-
 
 
 const fileFilter = (req: Request, file: any, cb: multer.FileFilterCallback) => {

@@ -32,6 +32,7 @@ const validateToken = (allowedRoles: string[]) => {
             }
 
             req.body.tokenId = decoded.data.id
+            req.headers.tokenId = decoded.data.id.toString();
             req.body.tokenEmail = decoded.data.email;
             req.body.tokenRole = decoded.data.role;
             next();

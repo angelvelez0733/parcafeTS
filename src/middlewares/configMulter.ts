@@ -4,14 +4,19 @@ import { Request } from "express";
 
 const storage = multer.diskStorage({
     destination: (req: Request, file, cb) => {
-        cb(null, "public/storage/");
+        console.log("📂 Guardando en:", path.join(__dirname, "../../public/storage/"));
+        cb(null, path.join(__dirname, "../../public/storage/")); 
     },
     filename: (req: Request, file, cb) => {
-        const userId = req.body.tokenId;
-        const fileName = `cv_${userId}.pdf`;
+        const userId = req.body.tokenId || req.headers.tokenId;
+        const fileName = `cv_${2}.pdf`;
+        console.log("📄 Nombre de archivo:", fileName);
         cb(null, fileName);
     }
 });
+
+
+
 
 const fileFilter = (req: Request, file: any, cb: multer.FileFilterCallback) => {
     if (file.mimetype === "application/pdf") {

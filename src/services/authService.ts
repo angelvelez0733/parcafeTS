@@ -17,7 +17,7 @@ class AuthService {
                         process.env.SECRET,
                         60
                     );    
-                                    
+            
                     return token;
                 }
             }

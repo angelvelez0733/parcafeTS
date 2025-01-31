@@ -7,7 +7,12 @@ export class UploadCvController {
 
     async handle(req: Request, res: Response): Promise<void> {
         try {
-            const userId = req.body.tokenId;
+            const userId = Number(req.headers.tokenId);
+
+            if (!userId) {
+                res.status(400).json(new UploadCvResponseDto("Usuario no autenticado"));
+                return;
+            }
             const filePath = req.file?.path;
 
             if (!filePath || !req.file) {

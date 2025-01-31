@@ -24,6 +24,7 @@ import { UploadCvController } from "../../controllers/users/uploadCv";
 import { uploadCv } from "../../middlewares/configMulter";
 const controller = new UploadCvController();
 
-router.post("/cv", uploadCv.single("cv"), validateToken(["user"]), controller.handle.bind(controller));
+router.post("/cv", validateToken(["user"]), uploadCv.single("cv"), controller.handle.bind(controller));
+
 
 export default router;

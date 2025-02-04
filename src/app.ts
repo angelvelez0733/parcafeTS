@@ -4,13 +4,16 @@ import dotenv from "dotenv";
 const app = express().use(bodyParser.json());
 
 
-//Imports 
+//Imports users
 import register from "./routes/users/user";
 import auth from "./routes/auth";
 import profile from "./routes/profile";
 import update from "./routes/users/user";
 import changePassword from './routes/users/user';
 import uploadCv from "./routes/users/user";
+
+//Imports admin
+import createArea from "./routes/admin/admin";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -21,7 +24,7 @@ app.use("/profile", profile);
 app.use("/user", update);
 app.use("/changePassword", changePassword);
 app.use("/upload", uploadCv);
-
+app.use("/admin", createArea);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

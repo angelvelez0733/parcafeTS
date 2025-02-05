@@ -16,6 +16,7 @@ import getAllAreasUser from "./routes/users/user";
 //Imports admin
 import createArea from "./routes/admin/admin";
 import getAllAreas from "./routes/admin/admin";
+import getAreasByStatus from "./routes/admin/admin";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -29,6 +30,7 @@ app.use("/upload", uploadCv);
 app.use("/user", getAllAreasUser);
 app.use("/admin", createArea);
 app.use("/admin", getAllAreas);
+app.use("/admin", getAreasByStatus);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

@@ -15,6 +15,9 @@ router.get("/get-areas", validateToken(["admin"]), getAllAreasController);
 import { getAreasByStatusController } from "../../controllers/admin/getAreaByStatus";
 router.get("/get-areas/:status", validateToken(["admin"]), getAreasByStatusController);
 
-
+//IMPORTS UPDATED AREA
+import { updateAreaController } from "../../controllers/admin/updateArea";
+import { validateUpdateArea } from "../../middlewares/validators/validateUpdateArea";
+router.put("/update-area/:id_area", validateToken(["admin"]), validateUpdateArea, updateAreaController);
 
 export default router;

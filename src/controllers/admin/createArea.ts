@@ -12,7 +12,7 @@ class AreaController {
 
             res.status(201).json({
                 status: "success",
-                data: newArea
+                message: "New Area created"
             });
 
         } catch (error: any) {

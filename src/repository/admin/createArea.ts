@@ -1,15 +1,13 @@
 import db from "../../config/configDB";
-import { ResultSetHeader } from "mysql2";
 import AreaDto from "../../DTO/area";
 
 class AreaRepository {
     async createArea(areaDto: AreaDto) {
         try {
-            const sql = `INSERT INTO areas(nombre, descripcion, fk_role) VALUES (?, ?,'admin')`;
-            const [result] = await db.execute<ResultSetHeader>(sql, [areaDto.name, areaDto.description]);
-            console.log(result.insertId);
+            const sql = "INSERT INTO areas(nombre, descripcion, rol) VALUES (?, ?,'admin')";
+            const [result] = await db.query(sql, [areaDto.name, areaDto.description]);
             
-            return result.insertId;
+            return result;
         } catch (error) {
             throw error;
         }

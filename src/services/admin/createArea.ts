@@ -5,7 +5,6 @@ class AreaService {
     async createArea(areaDto: AreaDto) {
         try {
             const newAreaId = await AreaRepository.createArea(areaDto);
-            console.log(newAreaId);
             
             return {id: newAreaId, name: areaDto.name};
         } catch (error) {

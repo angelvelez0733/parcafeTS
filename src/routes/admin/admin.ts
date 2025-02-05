@@ -7,4 +7,7 @@ import AreaController from "../../controllers/admin/createArea";
 
 router.post("/create-area", validateToken(["admin"]), AreaController.createArea);
 
+//IMPORTS GET ALL AREAS
+import { getAllAreasController } from "../../controllers/admin/getAllAreas";
+router.get("/get-areas", validateToken(["admin"]), getAllAreasController);
 export default router;

@@ -11,9 +11,11 @@ import profile from "./routes/profile";
 import update from "./routes/users/user";
 import changePassword from './routes/users/user';
 import uploadCv from "./routes/users/user";
+import getAllAreasUser from "./routes/users/user";
 
 //Imports admin
 import createArea from "./routes/admin/admin";
+import getAllAreas from "./routes/admin/admin";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -24,7 +26,9 @@ app.use("/profile", profile);
 app.use("/user", update);
 app.use("/changePassword", changePassword);
 app.use("/upload", uploadCv);
+app.use("/user", getAllAreasUser);
 app.use("/admin", createArea);
+app.use("/admin", getAllAreas);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

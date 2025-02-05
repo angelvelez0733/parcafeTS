@@ -26,5 +26,7 @@ const controller = new UploadCvController();
 
 router.post("/cv", validateToken(["user"]), uploadCv.single("cv"), controller.handle.bind(controller));
 
-
+//IMPORTS GET ALL AREAS WITH STATUS: ACTIVE
+import { getAllAreasControllerUser } from "../../controllers/users/getAllAreas";
+router.get("/get-areas", validateToken(["user"]), getAllAreasControllerUser);
 export default router;

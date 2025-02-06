@@ -18,6 +18,7 @@ import createArea from "./routes/admin/admin";
 import getAllAreas from "./routes/admin/admin";
 import getAreasByStatus from "./routes/admin/admin";
 import updateArea from "./routes/admin/admin";
+import updateStatusArea from "./routes/admin/admin";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -33,6 +34,7 @@ app.use("/admin", createArea);
 app.use("/admin", getAllAreas);
 app.use("/admin", getAreasByStatus);
 app.use("admin", updateArea);
+app.use("/admin", updateStatusArea);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

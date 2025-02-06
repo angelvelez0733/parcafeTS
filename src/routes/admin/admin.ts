@@ -20,4 +20,8 @@ import { updateAreaController } from "../../controllers/admin/updateArea";
 import { validateUpdateArea } from "../../middlewares/validators/validateUpdateArea";
 router.put("/update-area/:id_area", validateToken(["admin"]), validateUpdateArea, updateAreaController);
 
+//IMPORTS CHANGE STATUS AREA
+import { changeStatusAreaController } from "../../controllers/admin/changeStatusArea";
+router.put("/update-status-area/:id_area", validateToken(["admin"]), changeStatusAreaController);
+
 export default router;

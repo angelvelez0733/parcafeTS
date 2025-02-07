@@ -24,4 +24,9 @@ router.put("/update-area/:id_area", validateToken(["admin"]), validateUpdateArea
 import { changeStatusAreaController } from "../../controllers/admin/changeStatusArea";
 router.put("/update-status-area/:id_area", validateToken(["admin"]), changeStatusAreaController);
 
+//IMPORTS CREATE VACANCY
+import { createVacancyController } from "../../controllers/admin/vacancy/create";
+import validateVacancy from "../../middlewares/validators/validateVacancy";
+router.post("/create-vacancy", validateToken(["admin"]), validateVacancy, createVacancyController);
+
 export default router;

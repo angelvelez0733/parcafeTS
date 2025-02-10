@@ -29,4 +29,7 @@ import { createVacancyController } from "../../controllers/admin/vacancy/create"
 import validateVacancy from "../../middlewares/validators/validateVacancy";
 router.post("/create-vacancy", validateToken(["admin"]), validateVacancy, createVacancyController);
 
+import { updateVacancyController } from "../../controllers/admin/vacancy/update";
+router.put("/update-vacancy", validateToken(["admin"]), updateVacancyController);
+
 export default router;

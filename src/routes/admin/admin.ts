@@ -32,4 +32,8 @@ router.post("/create-vacancy", validateToken(["admin"]), validateVacancy, create
 import { updateVacancyController } from "../../controllers/admin/vacancy/update";
 router.put("/update-vacancy", validateToken(["admin"]), updateVacancyController);
 
+//IMPORTS CHANGE STATE VACANCY
+import { changeStateVacancyController } from "../../controllers/admin/vacancy/changeState";
+router.put("/vacancy/changeState/:id_vacancy", validateToken(["admin"]), changeStateVacancyController);
+
 export default router;

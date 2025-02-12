@@ -15,7 +15,7 @@ export const updateVacancyController = async (req: Request, res: Response): Prom
 
     } catch(error) {
         if(error instanceof Error) {
-            console.error("Error trying to change password", error.message);
+            console.error("Error trying to change vacancy data", error.message);
             return res.status(400).json({
                 message: "Error"
             });

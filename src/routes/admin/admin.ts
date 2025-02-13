@@ -39,5 +39,8 @@ import validateDate from "../../middlewares/validators/changeDate";
 router.put("/change-date", validateToken(["admin"]), validateDate, changeDateController);
 
 
+//IMPORTS CHANGE STATE VACANCY
+import { changeStateVacancyController } from "../../controllers/admin/vacancy/changeState";
+router.put("/vacancy/changeState/:id_vacancy", validateToken(["admin"]), changeStateVacancyController);
 
 export default router;

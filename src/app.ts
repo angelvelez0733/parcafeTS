@@ -22,6 +22,7 @@ import updateStatusArea from "./routes/admin/admin";
 import createVacancy from "./routes/admin/admin";
 import updateVacancy from "./routes/admin/admin";
 import changeDateVacancy from "./routes/admin/admin";
+import changeStateVacancy from "./routes/admin/admin";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -41,6 +42,7 @@ app.use("/admin", updateStatusArea);
 app.use("/admin", createVacancy);
 app.use("/admin", updateVacancy);
 app.use("/admin", changeDateVacancy);
+app.use("/admin", changeStateVacancy);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

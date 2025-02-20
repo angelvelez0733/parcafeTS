@@ -29,4 +29,11 @@ router.post("/cv", validateToken(["user"]), uploadCv.single("cv"), controller.ha
 //IMPORTS GET ALL AREAS WITH STATUS: ACTIVE
 import { getAllAreasControllerUser } from "../../controllers/users/getAllAreas";
 router.get("/get-areas", validateToken(["user"]), getAllAreasControllerUser);
+
+//IMPORT CREATE APPLICATION OF VACANCY
+import { createApplicationController } from "../../controllers/users/createSolicitud";
+import { validateApplication } from "../../middlewares/validators/validateSolicitud";
+router.post("/solicitud", validateToken(["user"]), validateApplication, createApplicationController)
+
+
 export default router;

@@ -45,6 +45,6 @@ router.put("/vacancy/changeState/:id_vacancy", validateToken(["admin"]), changeS
 
 //IMPORT ENDING VACANCY
 import { finalizeVacancyController } from "../../controllers/admin/vacancy/ending";
-router.put("/vacancy/:id_vacante/finalize", finalizeVacancyController);
+router.put("/vacancy/:id_vacante/finalize", validateToken(["admin"]), finalizeVacancyController);
 
 export default router;

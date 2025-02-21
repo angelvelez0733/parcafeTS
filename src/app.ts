@@ -13,6 +13,7 @@ import changePassword from './routes/users/user';
 import uploadCv from "./routes/users/user";
 import getAllAreasUser from "./routes/users/user";
 import createApplication from "./routes/users/user";
+import getVacanciesUser from "./routes/users/user";
 
 //Imports admin
 import createArea from "./routes/admin/admin";
@@ -47,6 +48,7 @@ app.use("/admin", changeDateVacancy);
 app.use("/admin", changeStateVacancy);
 app.use("/admin", endingVacancy);
 app.use("/user", createApplication);
+app.use("/user", getVacanciesUser);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

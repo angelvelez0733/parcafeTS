@@ -35,5 +35,9 @@ import { createApplicationController } from "../../controllers/users/createSolic
 import { validateApplication } from "../../middlewares/validators/validateSolicitud";
 router.post("/solicitud", validateToken(["user"]), validateApplication, createApplicationController)
 
+//IMPORT GET VACANCIES
+import { getVacancyUserController } from "../../controllers/users/getVacancy";
+router.get("/get-vacancies", getVacancyUserController);
+
 
 export default router;

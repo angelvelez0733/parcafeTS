@@ -43,4 +43,8 @@ router.put("/change-date", validateToken(["admin"]), validateDate, changeDateCon
 import { changeStateVacancyController } from "../../controllers/admin/vacancy/changeState";
 router.put("/vacancy/changeState/:id_vacancy", validateToken(["admin"]), changeStateVacancyController);
 
+//IMPORT ENDING VACANCY
+import { finalizeVacancyController } from "../../controllers/admin/vacancy/ending";
+router.put("/vacancy/:id_vacante/finalize", finalizeVacancyController);
+
 export default router;

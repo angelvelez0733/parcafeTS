@@ -24,6 +24,7 @@ import createVacancy from "./routes/admin/admin";
 import updateVacancy from "./routes/admin/admin";
 import changeDateVacancy from "./routes/admin/admin";
 import changeStateVacancy from "./routes/admin/admin";
+import endingVacancy from "./routes/admin/admin";
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -44,6 +45,7 @@ app.use("/admin", createVacancy);
 app.use("/admin", updateVacancy);
 app.use("/admin", changeDateVacancy);
 app.use("/admin", changeStateVacancy);
+app.use("/admin", endingVacancy);
 app.use("/user", createApplication);
 
 app.listen(PORT, () => {

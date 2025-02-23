@@ -47,4 +47,8 @@ router.put("/vacancy/changeState/:id_vacancy", validateToken(["admin"]), changeS
 import { finalizeVacancyController } from "../../controllers/admin/vacancy/ending";
 router.put("/vacancy/:id_vacante/finalize", validateToken(["admin"]), finalizeVacancyController);
 
+//IMPORTS CHANGE STATE APPLICATION (REQUEST VACANCY)
+import { changeStateController } from "../../controllers/admin/requestVacancy/changeState";
+router.put("/change-state/:idSolicitud", validateToken(["admin", "superadmin"]), changeStateController);
+
 export default router;

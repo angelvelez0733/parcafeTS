@@ -51,4 +51,12 @@ router.put("/vacancy/:id_vacante/finalize", validateToken(["admin"]), finalizeVa
 import { changeStateController } from "../../controllers/admin/requestVacancy/changeState";
 router.put("/change-state/:idSolicitud", validateToken(["admin", "superadmin"]), changeStateController);
 
+//IMPORT GET APPLICATION
+import { getApplicationController } from "../../controllers/admin/application/getSolicitudes";
+router.get("/solicitudes", validateToken(["admin", "superadmin"]), getApplicationController);
+
+//IMPORT GET CV_PATH
+import { getCvController } from "../../controllers/admin/application/getCv";
+router.get("/cv/:userId", validateToken(["admin", "superadmin"]), getCvController);
+
 export default router;

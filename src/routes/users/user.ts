@@ -39,5 +39,8 @@ router.post("/solicitud", validateToken(["user"]), validateApplication, createAp
 import { getVacancyUserController } from "../../controllers/users/getVacancy";
 router.get("/get-vacancies", getVacancyUserController);
 
+//IMPORT GET VACANCIES BY AREA
+import { getVacanciesByAreaController } from "../../controllers/users/getVacanciesByAreas";
+router.get("/vacancies/area/:areaName", validateToken(["user", "admin", "superadmin"]), getVacanciesByAreaController);
 
 export default router;

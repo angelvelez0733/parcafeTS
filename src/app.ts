@@ -14,6 +14,7 @@ import uploadCv from "./routes/users/user";
 import getAllAreasUser from "./routes/users/user";
 import createApplication from "./routes/users/user";
 import getVacanciesUser from "./routes/users/user";
+import getVacanciesByArea from "./routes/users/user";
 
 //Imports admin
 import createArea from "./routes/admin/admin";
@@ -55,6 +56,7 @@ app.use("/user", getVacanciesUser);
 app.use("/admin", changeStateApplication);
 app.use("/admin", getApplication);
 app.use("/admin", getCv);
+app.use("/user", getVacanciesByArea);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

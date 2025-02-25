@@ -44,4 +44,8 @@ import { getUserByNameEmailController } from "../../controllers/users/getUserByN
 router.get("/get-user-name-email", getUserByNameEmailController);
 
 
+//IMPORT GET VACANCIES BY AREA
+import { getVacanciesByAreaController } from "../../controllers/users/getVacanciesByAreas";
+router.get("/vacancies/area/:areaName", validateToken(["user", "admin", "superadmin"]), getVacanciesByAreaController);
+
 export default router;

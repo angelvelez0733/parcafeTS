@@ -32,6 +32,9 @@ import getApplication from "./routes/admin/admin";
 import getCv from "./routes/admin/admin";
 import getRequestVacancy from './routes/admin/admin';
 
+//Imports superAdmin
+import createUsersOfSuperAdmin from "./routes/superAdmin/superAdmin";
+
 dotenv.config();
 const PORT = process.env.PORT || 10240;
 
@@ -58,6 +61,8 @@ app.use("/admin", changeStateApplication);
 app.use("/admin", getApplication);
 app.use("/admin", getCv);
 app.use("/admin", getRequestVacancy);
+
+app.use("/superAdmin", createUsersOfSuperAdmin);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

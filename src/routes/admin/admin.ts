@@ -59,4 +59,7 @@ router.get("/solicitudes", validateToken(["admin", "superadmin"]), getApplicatio
 import { getCvController } from "../../controllers/admin/application/getCv";
 router.get("/cv/:userId", validateToken(["admin", "superadmin"]), getCvController);
 
+import { getRequestController } from "../../controllers/admin/requestVacancy/getRequests";
+router.get("/get-requests/:idVacante", getRequestController);
+
 export default router;

@@ -5,6 +5,7 @@ export const getRequest = async (idVacante: number) => {
     const values = [idVacante];
     try {
         const result = await db.query(sql, values);
+        console.log(result);
         return result;
     }catch (error) {
         if (error instanceof Error) {

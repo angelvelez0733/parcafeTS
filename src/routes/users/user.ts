@@ -39,5 +39,9 @@ router.post("/solicitud", validateToken(["user"]), validateApplication, createAp
 import { getVacancyUserController } from "../../controllers/users/getVacancy";
 router.get("/get-vacancies", getVacancyUserController);
 
+//IMPORT GET USER NAME EMAIL
+import { getUserByNameEmailController } from "../../controllers/users/getUserByNameEmail";
+router.get("/get-user-name-email", getUserByNameEmailController);
+
 
 export default router;

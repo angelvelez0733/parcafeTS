@@ -7,7 +7,6 @@ export const createApplicationController = async (req: Request, res: Response): 
         
         
         const result = await createApplicationService(tokenId, vacancyId);
-        console.log(result);
         
         res.status(201).json(
             result

@@ -15,6 +15,7 @@ import getAllAreasUser from "./routes/users/user";
 import createApplication from "./routes/users/user";
 import getVacanciesUser from "./routes/users/user";
 
+
 //Imports admin
 import createArea from "./routes/admin/admin";
 import getAllAreas from "./routes/admin/admin";
@@ -29,6 +30,7 @@ import endingVacancy from "./routes/admin/admin";
 import changeStateApplication from "./routes/admin/admin";
 import getApplication from "./routes/admin/admin";
 import getCv from "./routes/admin/admin";
+import getRequestVacancy from './routes/admin/admin';
 
 dotenv.config();
 const PORT = process.env.PORT || 10240;
@@ -55,6 +57,7 @@ app.use("/user", getVacanciesUser);
 app.use("/admin", changeStateApplication);
 app.use("/admin", getApplication);
 app.use("/admin", getCv);
+app.use("/admin", getRequestVacancy);
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

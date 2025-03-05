@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
+import db from "../config/configDB";
 dotenv.config();
 
 interface JwtPayload {
@@ -16,6 +17,12 @@ const validateToken = (allowedRoles: string[]) => {
             const token = req.header("Authorization")?.split(" ")[1];
             if (!token) {
                 res.status(401).json({ status: "You dont send token"});
+                return;
+            }
+
+            const [blacklistRows] = await db.query("SELECT * FROM token_blacklist WHERE token = ?", [token]);
+            if(Array.isArray(blacklistRows) && blacklistRows.length > 0) {
+                res.status(401).json({status: "Token has been invalidated"});
                 return;
             }
             

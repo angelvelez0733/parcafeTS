@@ -15,6 +15,7 @@ import getAllAreasUser from "./routes/users/user";
 import createApplication from "./routes/users/user";
 import getVacanciesUser from "./routes/users/user";
 import getUserByNameEmail from "./routes/users/user";
+import logout from "./routes/logout";
 
 
 //Imports admin
@@ -63,7 +64,7 @@ app.use("/admin", getApplication);
 app.use("/admin", getCv);
 app.use("/admin", getRequestVacancy);
 app.use("/admin", getUserByNameEmail);
-
+app.use("/profile", logout);
 app.use("/superAdmin", createUsersOfSuperAdmin);
 
 app.listen(PORT, () => {

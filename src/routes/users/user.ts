@@ -10,20 +10,17 @@ router.post("/", validationParamsRegister, validationRegister, registerControlle
 
 //IMPORTS UPDATE BASIC DATA 
 import updateController from "../../controllers/users/update";
-
 router.put("/update", validateToken(["user"]), updateController.updateUser);
 
 //IMPORT CHANGEPASSWORD
 import changePasswordController from '../../controllers/users/changePassword';  
 import { validationChangePassword, validationParamsChangePassword } from "../../middlewares/validators/changePassword";
-
 router.put("/",validationChangePassword, validationParamsChangePassword, validateToken(["user"]), changePasswordController);
 
 //IMPORT UPLOAD CV
 import { UploadCvController } from "../../controllers/users/uploadCv";
 import { uploadCv } from "../../middlewares/configMulter";
 const controller = new UploadCvController();
-
 router.post("/cv", validateToken(["user"]), uploadCv.single("cv"), controller.handle.bind(controller));
 
 //IMPORTS GET ALL AREAS WITH STATUS: ACTIVE
@@ -43,9 +40,8 @@ router.get("/get-vacancies", getVacancyUserController);
 import { getUserByNameEmailController } from "../../controllers/users/getUserByNameEmail";
 router.get("/get-user-name-email", getUserByNameEmailController);
 
-
 //IMPORT GET VACANCIES BY AREA
 import { getVacanciesByAreaController } from "../../controllers/users/getVacanciesByAreas";
-router.get("/vacancies/area/:areaName", validateToken(["user", "admin", "superadmin"]), getVacanciesByAreaController);
+router.get("/vacancies/area/:areaName", validateToken(["user"]), getVacanciesByAreaController);
 
 export default router;

@@ -8,7 +8,6 @@ export const getCvRepo = async(user_id: number): Promise<string | null> => {
         const [rows] = await db.query("SELECT cv_path FROM users WHERE id = ?", [user_id]);
 
         const rowsArray = rows as UserCv[];
-        console.log("CV path fetched for user: ", user_id, "path: ", rowsArray[0]?.cv_path);
 
         return rowsArray[0]?.cv_path as string || null;
         

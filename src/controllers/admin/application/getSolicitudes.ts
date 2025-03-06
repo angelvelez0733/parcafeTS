@@ -3,7 +3,6 @@ import { getApplicationService } from "../../../services/admin/application/getSo
 
 export const getApplicationController = async(req: Request, res: Response): Promise<void> => {
     try {
-        console.log("Controller getApplication called by admin:", req.body.tokenId);
         const application = await getApplicationService();
         res.status(200).json(application);
         return;

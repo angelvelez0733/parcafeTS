@@ -38,7 +38,6 @@ import { changeDateController } from "../../controllers/admin/vacancy/changeDate
 import validateDate from "../../middlewares/validators/changeDate";
 router.put("/change-date", validateToken(["admin"]), validateDate, changeDateController);
 
-
 //IMPORTS CHANGE STATE VACANCY
 import { changeStateVacancyController } from "../../controllers/admin/vacancy/changeState";
 router.put("/vacancy/changeState/:id_vacancy", validateToken(["admin"]), changeStateVacancyController);
@@ -49,18 +48,22 @@ router.put("/vacancy/:id_vacante/finalize", validateToken(["admin"]), finalizeVa
 
 //IMPORTS CHANGE STATE APPLICATION (REQUEST VACANCY)
 import { changeStateController } from "../../controllers/admin/requestVacancy/changeState";
-router.put("/change-state/:idSolicitud", validateToken(["admin", "superadmin"]), changeStateController);
+router.put("/change-state/:idSolicitud", validateToken(["admin"]), changeStateController);
 
 //IMPORT GET APPLICATION
 import { getApplicationController } from "../../controllers/admin/application/getSolicitudes";
-router.get("/solicitudes", validateToken(["admin", "superadmin"]), getApplicationController);
+router.get("/solicitudes", validateToken(["admin"]), getApplicationController);
 
 //IMPORT GET CV_PATH
 import { getCvController } from "../../controllers/admin/application/getCv";
-router.get("/cv/:userId", validateToken(["admin", "superadmin"]), getCvController);
+router.get("/cv/:userId", validateToken(["admin"]), getCvController);
 
 //IMPORT GET REQUEST BY VACANCIES
 import { getRequestController } from "../../controllers/admin/requestVacancy/getRequests";
-router.get("/get-requests/:idVacante", validateToken(["admin", "superadmin"]), getRequestController);
+router.get("/get-requests/:idVacante", validateToken(["admin"]), getRequestController);
+
+//IMPORT GET VACANCIES BY AREA
+import { getVacanciesByAreaController } from "../../controllers/users/getVacanciesByAreas";
+router.get("/vacancies/area/:areaName", validateToken(["admin"]), getVacanciesByAreaController);
 
 export default router;

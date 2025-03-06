@@ -19,7 +19,6 @@ export class UploadCvService {
             if (oldCvPath) {
                 const fullPath = path.resolve(oldCvPath);
                 if (fs.existsSync(fullPath)) {
-                    console.log("Eliminando archivo anterior:", fullPath);
                     fs.unlinkSync(fullPath);
                 }
             }

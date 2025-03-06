@@ -4,10 +4,13 @@ import dotenv from "dotenv";
 const app = express().use(bodyParser.json());
 
 
-//Imports users
+//Imports globals
 import register from "./routes/users/user";
 import auth from "./routes/auth";
 import profile from "./routes/profile";
+import logout from "./routes/logout";
+
+//Imports user
 import update from "./routes/users/user";
 import changePassword from './routes/users/user';
 import uploadCv from "./routes/users/user";
@@ -15,7 +18,6 @@ import getAllAreasUser from "./routes/users/user";
 import createApplication from "./routes/users/user";
 import getVacanciesUser from "./routes/users/user";
 import getUserByNameEmail from "./routes/users/user";
-import logout from "./routes/logout";
 
 
 //Imports admin
@@ -40,13 +42,23 @@ import createUsersOfSuperAdmin from "./routes/superAdmin/superAdmin";
 dotenv.config();
 const PORT = process.env.PORT || 10240;
 
+//GLOBAL ROUTES
 app.use("/register", register);
 app.use("/auth", auth);
 app.use("/profile", profile);
-app.use("/user", update);
 app.use("/changePassword", changePassword);
 app.use("/upload", uploadCv);
+app.use("/profile", logout);
+app.use("/superAdmin", createUsersOfSuperAdmin);
+
+//ROUTES USER
+app.use("/user", update);
 app.use("/user", getAllAreasUser);
+app.use("/user", createApplication);
+app.use("/user", getVacanciesUser);
+
+
+//ROUTES ADMIN
 app.use("/admin", createArea);
 app.use("/admin", getAllAreas);
 app.use("/admin", getAreasByStatus);
@@ -57,15 +69,12 @@ app.use("/admin", updateVacancy);
 app.use("/admin", changeDateVacancy);
 app.use("/admin", changeStateVacancy);
 app.use("/admin", endingVacancy);
-app.use("/user", createApplication);
-app.use("/user", getVacanciesUser);
 app.use("/admin", changeStateApplication);
 app.use("/admin", getApplication);
 app.use("/admin", getCv);
 app.use("/admin", getRequestVacancy);
 app.use("/admin", getUserByNameEmail);
-app.use("/profile", logout);
-app.use("/superAdmin", createUsersOfSuperAdmin);
+
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

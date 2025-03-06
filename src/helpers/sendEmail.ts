@@ -10,9 +10,7 @@ async function sendEmail(to: string, subject: string, text: string){
             to, 
             subject, 
             text,
-        })
-
-        console.log("Correo enviado");
+        });
     }  catch (error) {
         console.error('Error enviando correo:', error);
       }

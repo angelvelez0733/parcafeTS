@@ -16,7 +16,6 @@ export const getCvController = async(req: Request, res: Response): Promise<void>
         }
         
         const absolutePath = path.resolve(cvPath);
-        console.log("Serving CV from path: ", absolutePath);
         res.sendFile(absolutePath, (err) => {
             if (err) {
                 console.error("Error sending file", err);

@@ -19,7 +19,6 @@ connection.getConnection((err, conn) => {
         }
         return;
     }
-    console.log("Connected to database, OK");
 });
 
 export default connection.promise();

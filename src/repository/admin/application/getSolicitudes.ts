@@ -14,7 +14,7 @@ export const getApplicationRepo = async () => {
         JOIN users u ON s.fk_user_id = u.id
         JOIN vacante v ON s.fk_id_vacante = v.id_vacante
         `);
-        console.log("solicutdes Fetched: ", rows);
+
         return rows as any[];
     } catch (error: any) {
         console.error("Error in getApplicationRepo: ", error.message);
